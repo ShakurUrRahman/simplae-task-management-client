@@ -104,17 +104,17 @@ export default function Example() {
 
                                 {user?.email ?
                                     <>
-                                        <Link to="" className="text-base font-medium text-gray-500 hover:text-gray-900 mb-3">
+                                        <Link to="/addtask" className="text-base font-medium text-gray-500 hover:text-gray-900 mb-3">
                                             Add Task
                                         </Link>
                                         <Link to="" className="text-base font-medium text-gray-500 hover:text-gray-900">
                                             My Task
                                         </Link>
-                                        <Link to="" className="text-base font-medium text-gray-500 hover:text-gray-900 mb-3">
+                                        <Link to="/mytasks" className="text-base font-medium text-gray-500 hover:text-gray-900 mb-3">
                                             Completed Tasks
                                         </Link></>
                                     :
-                                    <Link to="" className="text-base font-medium text-gray-500 hover:text-gray-900 mb-3">
+                                    <Link to="/completedtasks" className="text-base font-medium text-gray-500 hover:text-gray-900 mb-3">
                                         Add Task
                                     </Link>}
                             </div>
