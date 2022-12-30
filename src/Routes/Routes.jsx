@@ -5,6 +5,8 @@ import SignUp from "../Pages/Authentication/SignUp"
 import CompletedTask from "../Pages/CompletedTask"
 import Home from "../Pages/Home"
 import MyTask from "../Pages/MyTask"
+import UpdateTask from "../Pages/UpdateTask"
+import PrivateRoute from "./PrivateRoute"
 
 export const router = createBrowserRouter([
     {
@@ -17,11 +19,11 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/mytasks',
-                element: <MyTask></MyTask>
+                element: <PrivateRoute><MyTask></MyTask></PrivateRoute>
             },
             {
                 path: '/completedtasks',
-                element: <CompletedTask></CompletedTask>
+                element: <PrivateRoute><CompletedTask></CompletedTask></PrivateRoute>
             },
             {
                 path: '/login',
@@ -30,6 +32,11 @@ export const router = createBrowserRouter([
             {
                 path: '/signup',
                 element: <SignUp></SignUp>
+            },
+            {
+                path: '/update/:id',
+                element: <UpdateTask></UpdateTask>,
+                loader: ({ params }) => fetch(`https://simple-task-management-server-side.vercel.app/update/${params.id}`)
             }
         ]
     }

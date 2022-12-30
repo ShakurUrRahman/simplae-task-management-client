@@ -33,15 +33,24 @@ export default function Example() {
                         </Popover.Button>
                     </div>
                     <div as="nav" className="hidden space-x-10 md:flex">
-                        <Link to="/" className="text-base font-medium text-gray-500 hover:text-gray-900">
-                            Add Task
-                        </Link>
-                        <Link to="/mytasks" className="text-base font-medium text-gray-500 hover:text-gray-900">
-                            My Task
-                        </Link>
-                        <Link to="/completedtasks" className="text-base font-medium text-gray-500 hover:text-gray-900">
-                            Completed Task
-                        </Link>
+                        {
+                            user?.email ?
+                                <>
+                                    <Link to="/" className="text-base font-medium text-gray-500 hover:text-gray-900">
+                                        Add Task
+                                    </Link>
+                                    <Link to="/mytasks" className="text-base font-medium text-gray-500 hover:text-gray-900">
+                                        My Task
+                                    </Link>
+                                    <Link to="/completedtasks" className="text-base font-medium text-gray-500 hover:text-gray-900">
+                                        Completed Task
+                                    </Link>
+                                </>
+                                :
+                                <Link to="/" className="text-base font-medium text-gray-500 hover:text-gray-900">
+                                    Add Task
+                                </Link>
+                        }
                     </div>
                     <div className="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
                         {user?.email ?
@@ -92,34 +101,48 @@ export default function Example() {
                                 </div>
                             </div>
                             <div className="mt-6 flex flex-col justify-center items-center">
-                                <Link to="" className="text-base font-medium text-gray-500 hover:text-gray-900 mb-3">
-                                    Add Task
-                                </Link>
-                                <Link to="" className="text-base font-medium text-gray-500 hover:text-gray-900">
-                                    My Task
-                                </Link>
-                                <Link to="" className="text-base font-medium text-gray-500 hover:text-gray-900 mb-3">
-                                    Completed Tasks
-                                </Link>
+
+                                {user?.email ?
+                                    <>
+                                        <Link to="" className="text-base font-medium text-gray-500 hover:text-gray-900 mb-3">
+                                            Add Task
+                                        </Link>
+                                        <Link to="" className="text-base font-medium text-gray-500 hover:text-gray-900">
+                                            My Task
+                                        </Link>
+                                        <Link to="" className="text-base font-medium text-gray-500 hover:text-gray-900 mb-3">
+                                            Completed Tasks
+                                        </Link></>
+                                    :
+                                    <Link to="" className="text-base font-medium text-gray-500 hover:text-gray-900 mb-3">
+                                        Add Task
+                                    </Link>}
                             </div>
                         </div>
                         <div className="space-y-3 py-3 px-5">
-                            <Link
-                                to="/signup"
-                                className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
-                            >
-                                Sign up
-                            </Link>
-                            <p className="mt-6 text-center text-base font-medium text-gray-500">
-                                Already have an account?{' '}
-                                <Link to="/login" className="text-indigo-600 hover:text-indigo-500">
-                                    Sign in
+                            {user?.email ?
+                                <Link onClick={handleLogOut} to="/login" className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">
+                                    Log Out
                                 </Link>
-                            </p>
+                                :
+                                <>
+                                    <Link
+                                        to="/signup"
+                                        className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                                    >
+                                        Sign up
+                                    </Link>
+                                    <p className="mt-6 text-center text-base font-medium text-gray-500">
+                                        Already have an account?{' '}
+                                        <Link to="/login" className="text-indigo-600 hover:text-indigo-500">
+                                            Sign in
+                                        </Link> </p>
+                                </>
+                            }
                         </div>
                     </div>
                 </Popover.Panel>
             </Transition>
-        </Popover>
+        </Popover >
     )
 }
