@@ -14,7 +14,7 @@ const CompletedTask = () => {
 
     const handleDeleteBtn = (id) => {
         console.log("delete btn clicked", id);
-        const agree = window.confirm("do you want to delete thisAre you sure you want to delete this?");
+        const agree = window.confirm("Are you sure do you want to delete this?");
         if (agree) {
             // console.log("delete this with id ", user._id);
             fetch(`https://adminui-app-server.vercel.app/task/${id}`, {

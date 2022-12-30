@@ -3,7 +3,7 @@ import { toast } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext/AuthProvider';
 
-const MyTask = ({ Status }) => {
+const MyTask = () => {
     const [tasks, setTasks] = useState([]);
     const { user } = useContext(AuthContext);
     const [loader, setLoader] = useState(true);
@@ -19,6 +19,7 @@ const MyTask = ({ Status }) => {
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);
+                toast.success("Task completed successfully!")
             });
     };
 
